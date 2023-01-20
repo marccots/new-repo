@@ -10,7 +10,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token=53e1d5a2d1ae",
+    "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
     "vue": "^3.2.45"
