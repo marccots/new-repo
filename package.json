@@ -7,7 +7,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token=53e1d5a2d1ae"
   },
   "dependencies": {
     "vue": "^3.2.45"
@@ -26,5 +27,7 @@
     "chromatic": "^6.14.0",
     "vite": "^4.0.0",
     "vue-loader": "^16.8.3"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "new-repo@0.0.0"
 }
