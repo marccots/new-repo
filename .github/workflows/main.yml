@@ -1,40 +1,26 @@
-name: Build and Test
+# .github/workflows/chromatic.yml
 
-on:
-  push:
-    branches: "*"
-    tags:
-      - '*'
+# Workflow name
+name: 'Chromatic'
 
-  pull_request:
-    branches: [ master ]
+# Event for the workflow
+on: push
 
+# List of jobs
 jobs:
-  test:
+  chromatic-deployment:
+    # Operating System
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [ '14', '16', '18' ]
-    name: Node ${{ matrix.node }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Install dependencies
-        run: npm install
-      - name: Testing
-        run: npm test
-  chromatic:
-    name: Publish to Chromatic
-    runs-on: ubuntu-latest
+    # Job steps
     steps:
       - uses: actions/checkout@v1
       - name: Install dependencies
-        run: npm
+        # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
+        run: yarn
+        # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
         uses: chromaui/action@v1
+        # Chromatic GitHub Action options
         with:
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
