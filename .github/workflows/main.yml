@@ -6,7 +6,9 @@ name: 'Review on push'
 # Event for the workflow
 on:
   pull_request:
-    branches-ignore: "master" 
+    branches: 
+    - '*'
+    - '!master'
 
 # List of jobs
 jobs:
