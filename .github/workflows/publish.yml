@@ -4,9 +4,9 @@
 name: 'Publish to master on PR'
 
 # Event for the workflow
-on:
-  pull_request:
-    branches: "master"
+push:
+    branches:
+      - master
 
 # List of jobs
 jobs:
