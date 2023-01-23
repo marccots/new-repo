@@ -1,4 +1,4 @@
-# .github/workflows/chromatic.yml
+# .github/workflows/publish.yml
 
 # Workflow name
 name: 'Publish to master on PR'
