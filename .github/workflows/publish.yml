@@ -12,14 +12,10 @@ on:
 # List of jobs
 jobs:
   if_merged:
-    chromatic:
-      # Operating System
-      runs-on: ubuntu-latest
-      # Job steps
-      steps:
-        - name: Install dependencies
-          run: npm install
-        - name: Testing
-          run: npm test
-        - name: Publish to Chromatic
-          run: npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN
+    - run:
+    command: npm install # Installs dependencies
+    - run:
+        command: npm test # Run your unit tests
+    - run:
+        # 👇 Publish Storybook and run visual tests in Chromatic
+        command: npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN
