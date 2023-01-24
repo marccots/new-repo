@@ -1,22 +1,19 @@
 # .github/workflows/publish.yml
 
 # Workflow name
-name: 'Publish to master on PR'
+name: 'Publish to master on merge'
 
 # Event for the workflow
 on:
-  push:
-    branches: "master"
-
+  pull_request:
+    types:
+      - closed
+      
 # List of jobs
 jobs:
-  chromatic-deployment:
-    # Operating System
+  if_merged:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    # Job steps
     steps:
-      - name: Install everything
-        run: echo "Install everything"
-        
-      - name: Publish to master
-        run: echo "Published to master"
+    - run: |
+        echo The PR was merged
