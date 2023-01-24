@@ -23,12 +23,9 @@ jobs:
         run: yarn
         # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
-        - run:
-          command: npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN --branch-name=${GITHUB_REF#refs/heads/}
+          run: npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN --branch-name=${GITHUB_REF#refs/heads/}
         # Chromatic GitHub Action options
         with:
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           autoAcceptChanges: true
-    
-  
