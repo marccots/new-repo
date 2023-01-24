@@ -12,14 +12,14 @@ on:
 # List of jobs
 jobs:
   if_merged:
-    chromatic-deployment:
-    # Operating System
-    runs-on: ubuntu-latest
-    # Job steps
-    steps:
-      - name: Install dependencies
-        run: npm install
-      - name: Testing
-        run: npm test
-      - name: Publish to Chromatic
-        run: npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN
+    chromatic:
+      # Operating System
+      runs-on: ubuntu-latest
+      # Job steps
+      steps:
+        - name: Install dependencies
+          run: npm install
+        - name: Testing
+          run: npm test
+        - name: Publish to Chromatic
+          run: npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN
