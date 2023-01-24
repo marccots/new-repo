@@ -15,5 +15,5 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo Publish Chromatic to ${GITHUB_REF#refs/heads/}
+    - run:
+        command: npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN --branch-name=${GITHUB_REF#refs/heads/}
