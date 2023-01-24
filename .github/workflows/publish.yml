@@ -16,4 +16,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo The Pull Request was merged to ${GITHUB_REF#refs/heads/}
+        echo The PR was merged to ${GITHUB_REF#refs/heads/}
