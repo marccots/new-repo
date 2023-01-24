@@ -1,7 +1,7 @@
 # .github/workflows/publish.yml
 
 # Workflow name
-name: 'Publish to master on merge'
+name: 'Publish automatically to Chromatic'
 
 # Event for the workflow
 on:
@@ -16,4 +16,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo The PR was merged to ${GITHUB_REF#refs/heads/}
+        echo Publish Chromatic to ${GITHUB_REF#refs/heads/}
