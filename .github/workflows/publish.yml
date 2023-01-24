@@ -1,0 +1,22 @@
+# .github/workflows/publish.yml
+
+# Workflow name
+name: 'Publish to master on PR'
+
+# Event for the workflow
+on:
+  push:
+    branches: "master"
+
+# List of jobs
+jobs:
+  chromatic-deployment:
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - name: Install everything
+        run: echo "Install everything"
+        
+      - name: Publish to master
+        run: echo "Published to master"
