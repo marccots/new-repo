@@ -1,7 +1,7 @@
-# .github/workflows/chromatic.yml
+# .github/workflows/review.yml
 
 # Workflow name
-name: 'REVIEW'
+name: 'Review PR'
 
 # Event for the workflow
 on:
