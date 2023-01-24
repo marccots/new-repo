@@ -16,4 +16,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo Automatically build Chromatic to ${GITHUB_REF#refs/heads/}
+        echo The PR was merged to ${GITHUB_REF#refs/heads/}
