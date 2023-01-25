@@ -12,10 +12,21 @@ on:
 # List of jobs
 jobs:
   if_merged:
-    - run:
-    command: npm install # Installs dependencies
-    - run:
-        command: npm test # Run your unit tests
-    - run:
-        # 👇 Publish Storybook and run visual tests in Chromatic
-        command: npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN
+    chromatic:
+      # Operating System
+      runs-on: ubuntu-latest
+      # Job steps
+      steps:
+        - uses: actions/checkout@v1
+        - name: Install dependencies
+          # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
+          run: yarn
+          # 👇 Adds Chromatic as a step in the workflow
+        - name: Publish to Chromatic
+          if: github.ref == 'refs/heads/master'
+          uses: chromaui/action@v1
+          # Chromatic GitHub Action options
+          with:
+            # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+            projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+            autoAcceptChanges: true
