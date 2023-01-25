@@ -21,4 +21,3 @@ jobs:
         
       - name: PR to review
         run: echo "Pull Request to review"
-        if: github.event.pull_request.merged == 'true'
