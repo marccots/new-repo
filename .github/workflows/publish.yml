@@ -12,7 +12,6 @@ on:
 # List of jobs
 jobs:
   chromatic:
-    if: github.event.pull_request.merged == 'true'
     # Operating System
     runs-on: ubuntu-latest
     # Job steps
@@ -22,3 +21,4 @@ jobs:
         
       - name: PR to review
         run: echo "Pull Request to review"
+        if: github.event.pull_request.merged == 'true'
