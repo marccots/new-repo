@@ -1,14 +1,13 @@
 # .github/workflows/publish.yml
 
 # Workflow name
-name: 'Publish automatically to Chromatic'
+name: 'Publish to master on PR'
 
 # Event for the workflow
 on:
-  pull_request:
-    types:
-      - closed
-      
+  push:
+    branches: "master"
+
 # List of jobs
 jobs:
   chromatic-deployment:
@@ -22,7 +21,6 @@ jobs:
         run: yarn
         # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
-        if: github.ref == 'refs/heads/master'
         uses: chromaui/action@v1
         # Chromatic GitHub Action options
         with:
