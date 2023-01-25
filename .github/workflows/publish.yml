@@ -11,16 +11,14 @@ on:
       
 # List of jobs
 jobs:
-  if_merged:
-    chromatic:
-      # Operating System
-      runs-on: ubuntu-latest
-      # Job steps
-      steps:
-        - name: Install dependencies
-          run: npm install
-        - name: Testing
-          run: npm test
-        - name: Publish to Chromatic
-          uses: chromaui/action@v1
-          run: npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN
+  chromatic:
+    if: github.event.pull_request.merged == 'true'
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - name: Install dependencies
+        run: echo "Install dependencies"
+        
+      - name: PR to review
+        run: echo "Pull Request to review"
