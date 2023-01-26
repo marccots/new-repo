@@ -1,0 +1,65 @@
+name: Save JSON
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  get_folder_structure:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: npm install
+      run: npm install
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+      
+    - name: Get Folder Structure
+      run: |
+        node -e "const fs = require('fs');
+        const path = require('path');
+        const directoryPath = process.env.GITHUB_WORKSPACE;
+        const folderStructure = {};
+
+        const getFolderStructure = (dir, obj) => {
+          fs.readdirSync(dir).forEach(file => {
+            const fullPath = path.join(dir, file);
+            if (fs.statSync(fullPath).isDirectory()) {
+              obj[file] = {};
+              getFolderStructure(fullPath, obj[file]);
+            } else {
+              obj[file] = {};
+            }
+          });
+        };
+
+        getFolderStructure(directoryPath, folderStructure);
+
+        const json = JSON.stringify(folderStructure);
+        fs.writeFileSync('folder_structure.json', json);"
+      
+    - name: Install @actions/github
+      run: npm ci @actions/github
+      working-directory: ${{github.workspace}}
+    
+    - name: Commit and push JSON file
+      uses: actions/github-script@v3
+      env:
+        GITHUB_TOKEN: ${{ secrets.SECRET_NAME }}
+      with:
+        script: |
+          const { git, GitHub } = require("@actions/github")
+          const { execSync } = require("child_process")
+          // Add the JSON file
+          execSync("git add folder_structure.json")
+          // Commit the file
+          execSync("git commit -m 'Add folder_structure.json'")
+          // Push the commit
+          git.push("origin", "HEAD:master")
