@@ -15,7 +15,8 @@
     "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
-    "vue": "^3.2.45"
+    "vue": "^3.2.45",
+    "@actions/github": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
